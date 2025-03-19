@@ -56,12 +56,17 @@
             // 
             // txtAnswer
             // 
+            this.txtAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAnswer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnswer.Location = new System.Drawing.Point(6, 92);
             this.txtAnswer.Multiline = true;
             this.txtAnswer.Name = "txtAnswer";
             this.txtAnswer.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtAnswer.Size = new System.Drawing.Size(414, 182);
             this.txtAnswer.TabIndex = 3;
+            this.txtAnswer.WordWrap = false;
             // 
             // btnSelect
             // 
@@ -86,8 +91,7 @@
             "VCF",
             "g.VCF",
             "Affymetrix Excel (tab-delimited - *.xls)",
-            "Affymetrix birdseed (tab-delimited - *.txt)",
-            "Regions file (tab-delimited - *.txt)"});
+            "Affymetrix birdseed (tab-delimited - *.txt)"});
             this.cboType.Location = new System.Drawing.Point(6, 63);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(336, 21);
@@ -107,7 +111,7 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQuit.Location = new System.Drawing.Point(12, 298);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(75, 23);
