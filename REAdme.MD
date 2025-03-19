@@ -34,7 +34,7 @@ VCF and gVCF files are processed the same and produce the same output (Figure 1)
 
 ### Affymetrix *.xls and birdseed *.txt files
 
-![Image](images/Figure2.jpgg)
+![Image](images/Figure2.jpg)
 
 Figure 2: Analysis of an Affymetrix file
 
