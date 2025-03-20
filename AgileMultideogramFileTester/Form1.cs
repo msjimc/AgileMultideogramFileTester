@@ -91,18 +91,33 @@ namespace AgileMultiIdeogramFileTester
                 if (chromosomeCounts[index].ToString("N0").Length > padding)
                 { padding = chromosomeCounts[index].ToString("N0").Length; }
             }
-
+            string returnString = "\r\n";
             for (int index = 1; index < 101; index++)
             {
                 if (chromosomeCounts[index] > 0)
-                { sb.Append(chromosomeCounts[index].ToString("N0").PadLeft(padding) + " " + "Chromosome " + index.ToString() + "\r\n"); }
+                {
+                    if (returnString == "")
+                    { returnString = "\r\n"; }
+                    else { returnString = ""; }
+                    sb.Append(chromosomeCounts[index].ToString("N0").PadLeft(padding) + " " + "Chromosome " + index.ToString().PadRight(10) + returnString); 
+                
+                }
             }
+            if (returnString == "")
+            { returnString = "\r\n"; }
+            else { returnString = ""; }
             if (chromosomeCounts[101] > 0)
-            { sb.Append(chromosomeCounts[101].ToString("N0").PadLeft(padding) + " " + "Chromosome X" + "\r\n"); }
+            { sb.Append(chromosomeCounts[101].ToString("N0").PadLeft(padding) + " " + "Chromosome X         " + returnString); }
+            if (returnString == "")
+            { returnString = "\r\n"; }
+            else { returnString = ""; }
             if (chromosomeCounts[102] > 0)
-            { sb.Append(chromosomeCounts[102].ToString("N0").PadLeft(padding) + " " + "Chromosome Y" + "\r\n"); }
+            { sb.Append(chromosomeCounts[102].ToString("N0").PadLeft(padding) + " " + "Chromosome Y         " + returnString); }
+            if (returnString == "")
+            { returnString = "\r\n"; }
+            else { returnString = ""; }
             if (chromosomeCounts[103] > 0)
-            { sb.Append(chromosomeCounts[103].ToString("N0").PadLeft(padding) + " " + "Chromosome MT" + "\r\n"); }
+            { sb.Append(chromosomeCounts[103].ToString("N0").PadLeft(padding) + " " + "Chromosome MT        " + returnString); }
 
             return "\r\n\r\nChromosome SNP count\r\n" +sb.ToString();
 
