@@ -9,15 +9,15 @@
   
 ## Introduction
 
-![Image](images/Figure1.jpg)
-
-Figure 1: Analysis of a VCF file
-
 ```AgileMultideogramFileTester``` was created to check the format and data content of files to be used by ```AgileMultideogram```. These can be the original Affymetrix tab-delimited text files (*.xls), the Affymettrix birdseed tab-delimited text files (*.txt), VCF files (*.vcf) or genomic VCF files (*.g.vcf). These files can be read even if they are gzip compressed (*.txt.gz, *.xls.gz, *.vcf.gz or *.g.vcf.gz)
 
 To use first select the file type from the dropdown list and then press the ***Select*** button to pick your data file. Once selected, ```AgileMultideogramFileTester``` will read the file, looking for the required columns and then if found, count all the variants that have each of the required values. If a field is found to be missing ```AgileMultideogramFileTester``` will report on which fields are missing and will not attempt to read the file.
 
 ### VCF and gVCF outputs
+
+![Image](images/Figure1.jpg)
+
+Figure 1: Analysis of a VCF file
 
 ***Note:*** Due to the size of genomic VCF files, processing them may take a while. 
 
@@ -29,8 +29,9 @@ VCF and gVCF files are processed the same and produce the same output (Figure 1)
 #### Notes
 - ```AgileMultideogramFileTester``` only counts lines that do not start with a **#** character.
 - The third line-"has different length format and sample data fields" refers to the number of entries in the FORMAT and sample fields.
-- Valid chromosome IDs are **X**, **x**, **Y**, **y** or a number from **1** to **22**. The ID can be with or without a **chr** prefix.
+- Chromosome IDs are case insensitive and can be **X**, **Y**, **M**, **MT** or a number from **1** to **100**. The ID can be with or without a **chr** prefix.
 - The tenth and eleventh line refer to the AD and DP fields in the FORMAT column.
+- If a chromosome contains no SNPs it will be omitted from the list.
 
 ### Affymetrix *.xls and birdseed *.txt files
 
@@ -52,7 +53,8 @@ Figure 2: Analysis of an Affymetrix file
 - Column names are case insensitive.
 - Genotypes can only be **AA**, **BB**, **AB** and are case insensitive.
 - An ID name must be longer than 2 characters
-
+- Chromosome IDs are case insensitive and can be **X**, **Y**, **M**,  **MT** or a number from **1** to **100**. The ID can be with or without the **chr** prefix.
+- If a chromosome contains no SNPs it will be omitted from the list.
 
 ## Guide
 

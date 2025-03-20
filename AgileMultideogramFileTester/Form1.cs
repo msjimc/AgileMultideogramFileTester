@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -36,6 +38,7 @@ namespace AgileMultiIdeogramFileTester
             public int biggest;
         }
 
+        int[] chromosomeCounts = null;
         public Form1()
         {
             InitializeComponent();
@@ -61,15 +64,47 @@ namespace AgileMultiIdeogramFileTester
 
             txtAnswer.Clear();
             Application.DoEvents();
+            resetChromosomeCounts();
 
             if (cboType.Text == "Affymetrix birdseed (tab-delimited - *.txt)")
-            { txtAnswer.Text = testBirdseed(filename); }
+            { txtAnswer.Text = testBirdseed(filename) + chromosomeCountData(); }
             else if (cboType.Text == "Affymetrix Excel (tab-delimited - *.xls)")
-            { txtAnswer.Text = testAffy(filename); }
+            { txtAnswer.Text = testAffy(filename) + chromosomeCountData(); }
             else if (cboType.Text == "VCF")
-            { txtAnswer.Text = testVCF(filename); }
+            { txtAnswer.Text = testVCF(filename) + chromosomeCountData(); }
             else if (cboType.Text == "g.VCF")
-            { txtAnswer.Text = testgVCF(filename); }
+            { txtAnswer.Text = testgVCF(filename) + chromosomeCountData(); }
+
+        }
+
+        private void resetChromosomeCounts()
+        {
+            chromosomeCounts = new int[104];
+        }
+
+        private string chromosomeCountData()
+        {
+            int padding = 0;
+            StringBuilder sb = new StringBuilder();
+            for (int index = 1; index < 101; index++)
+            {
+                if (chromosomeCounts[index].ToString("N0").Length > padding)
+                { padding = chromosomeCounts[index].ToString("N0").Length; }
+            }
+
+            for (int index = 1; index < 101; index++)
+            {
+                if (chromosomeCounts[index] > 0)
+                { sb.Append(chromosomeCounts[index].ToString("N0").PadLeft(padding) + " " + "Chromosome " + index.ToString() + "\r\n"); }
+            }
+            if (chromosomeCounts[101] > 0)
+            { sb.Append(chromosomeCounts[101].ToString("N0").PadLeft(padding) + " " + "Chromosome X" + "\r\n"); }
+            if (chromosomeCounts[102] > 0)
+            { sb.Append(chromosomeCounts[102].ToString("N0").PadLeft(padding) + " " + "Chromosome Y" + "\r\n"); }
+            if (chromosomeCounts[103] > 0)
+            { sb.Append(chromosomeCounts[103].ToString("N0").PadLeft(padding) + " " + "Chromosome MT" + "\r\n"); }
+
+            return "\r\n\r\nChromosome SNP count\r\n" +sb.ToString();
 
         }
 
@@ -212,15 +247,27 @@ namespace AgileMultiIdeogramFileTester
                             items[indexes.CHROM] = items[indexes.CHROM].ToLower().Replace("chr", "");
                             switch (items[indexes.CHROM].ToLower())
                             {
+                                case "mt":
+                                case "m":
+                                    chromosomeCounts[103]++;
+                                    chromosomeCount++;
+                                    break;
                                 case "x":
+                                    chromosomeCounts[101]++;
+                                    chromosomeCount++;
+                                    break;
                                 case "y":
+                                    chromosomeCounts[102]++;
                                     chromosomeCount++;
                                     break;
                                 default:
                                     if (int.TryParse(items[indexes.CHROM], out int number))
                                     {
-                                        if (number >= 1 && number <= 22)
-                                        { chromosomeCount++; }
+                                        if (number >= 1 && number <= 100)
+                                        {
+                                            chromosomeCounts[number]++;
+                                            chromosomeCount++; 
+                                        }
                                     }
                                     break;
                             }
@@ -414,15 +461,27 @@ namespace AgileMultiIdeogramFileTester
                             items[indexes.CHROM] = items[indexes.CHROM].ToLower().Replace("chr", "");
                             switch (items[indexes.CHROM].ToLower())
                             {
+                                case "mt":
+                                case "m":
+                                    chromosomeCounts[103]++;
+                                    chromosomeCount++;
+                                    break;
                                 case "x":
+                                    chromosomeCounts[101]++;
+                                    chromosomeCount++;
+                                    break;
                                 case "y":
+                                    chromosomeCounts[102]++;
                                     chromosomeCount++;
                                     break;
                                 default:
                                     if (int.TryParse(items[indexes.CHROM], out int number))
                                     {
-                                        if (number >= 1 && number <= 22)
-                                        { chromosomeCount++; }
+                                        if (number >= 1 && number <= 100)
+                                        {
+                                            chromosomeCounts[number]++;
+                                            chromosomeCount++;
+                                        }
                                     }
                                     break;
                             }
@@ -575,15 +634,27 @@ namespace AgileMultiIdeogramFileTester
                         items[indexes.ChromosomeIndex] = items[indexes.ChromosomeIndex].ToLower().Replace("chr", "");
                         switch (items[indexes.ChromosomeIndex].ToLower())
                         {
+                            case "mt":
+                            case "m":
+                                chromosomeCounts[103]++;
+                                chromosomeCount++;
+                                break;
                             case "x":
+                                chromosomeCounts[101]++;
+                                chromosomeCount++;
+                                break;
                             case "y":
+                                chromosomeCounts[102]++;
                                 chromosomeCount++;
                                 break;
                             default:
                                 if (int.TryParse(items[indexes.ChromosomeIndex], out int number))
                                 {
-                                    if (number >= 1 && number <= 22)
-                                    { chromosomeCount++; }
+                                    if (number >= 1 && number <= 100)
+                                    {
+                                        chromosomeCounts[number]++;
+                                        chromosomeCount++;
+                                    }
                                 }
                                 break;
                         }
@@ -709,15 +780,27 @@ namespace AgileMultiIdeogramFileTester
                         items[indexes.ChromosomeIndex] = items[indexes.ChromosomeIndex].ToLower().Replace("chr", "");
                         switch (items[indexes.ChromosomeIndex].ToLower())
                         {
+                            case "mt":
+                            case "m":
+                                chromosomeCounts[103]++;
+                                chromosomeCount++;
+                                break;
                             case "x":
+                                chromosomeCounts[101]++;
+                                chromosomeCount++;
+                                break;
                             case "y":
+                                chromosomeCounts[102]++;
                                 chromosomeCount++;
                                 break;
                             default:
                                 if (int.TryParse(items[indexes.ChromosomeIndex], out int number))
                                 {
-                                    if (number >= 1 && number <= 22)
-                                    { chromosomeCount++; }
+                                    if (number >= 1 && number <= 100)
+                                    {
+                                        chromosomeCounts[number]++;
+                                        chromosomeCount++;
+                                    }
                                 }
                                 break;
                         }
@@ -730,10 +813,6 @@ namespace AgileMultiIdeogramFileTester
                     else
                     { toShort++; }
                 }
-
-
-
-
             }
             catch (Exception ex) { answer = ex.Message; }
             finally { fs?.Close(); }
