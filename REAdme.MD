@@ -4,7 +4,8 @@
 
 - [AgileMultideogramFileTester](#agilemultideogramfiletester) 
   - [Introduction](#introduction) 
-  - [Download](#download)
+  - [Guide](#guide)
+  - [Download](download/README.md)
   - [Running on Linux systems](#running-on-linux-systems)
   
 ## Introduction
@@ -12,6 +13,8 @@
 ```AgileMultideogramFileTester``` was created to check the format and data content of files to be used by ```AgileMultideogram```. These can be the original Affymetrix tab-delimited text files (*.xls), the Affymettrix birdseed tab-delimited text files (*.txt), VCF files (*.vcf) or genomic VCF files (*.g.vcf). These files can be read even if they are gzip compressed (*.txt.gz, *.xls.gz, *.vcf.gz or *.g.vcf.gz)
 
 To use first select the file type from the dropdown list and then press the ***Select*** button to pick your data file. Once selected, ```AgileMultideogramFileTester``` will read the file, looking for the required columns and then if found, count all the variants that have each of the required values. If a field is found to be missing ```AgileMultideogramFileTester``` will report on which fields are missing and will not attempt to read the file.
+
+## Guide
 
 ### VCF and gVCF outputs
 
@@ -56,14 +59,5 @@ Figure 2: Analysis of an Affymetrix file
 - Chromosome IDs are case insensitive and can be **X**, **Y**, **M**,  **MT** or a number from **1** to **100**. The ID can be with or without the **chr** prefix.
 - If a chromosome contains no SNPs it will be omitted from the list.
 
-## Guide
-
-The user guide is [here](Guide/README.md).
-
-## Download
-
-The prebuilt program can be downloaded [here](download/README.md).
-
 ## Running on Linux systems
-
-The prebuilt programs can be run on Linux (and macOS) using the Wine package as described [here](Linux_with_Wine/README.md).
+The prebuilt programs can be run on Linux (and macOS) using the Wine package as described [here](https://github.com/msjimc/RunningWindowsProgramsOnLinux).
