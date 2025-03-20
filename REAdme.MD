@@ -5,7 +5,7 @@
 - [AgileMultideogramFileTester](#agilemultideogramfiletester) 
   - [Introduction](#introduction) 
   - [Guide](#guide)
-  - [Download](download/README.md)
+  - [Download](program/README.md)
   - [Running on Linux systems](#running-on-linux-systems)
   
 ## Introduction
