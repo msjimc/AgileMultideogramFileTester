@@ -60,4 +60,4 @@ Figure 2: Analysis of an Affymetrix file
 - If a chromosome contains no SNPs it will be omitted from the list.
 
 ## Running on Linux systems
-The prebuilt programs can be run on Linux (and macOS) using the Wine package as described [here](https://github.com/msjimc/RunningWindowsProgramsOnLinux).
+The prebuilt programs can be run on Linux (and macOS) using the Wine package as described [here](https://github.com/msjimc/RunningWindowsProgramsOnLinux/blob/main/README.md).
